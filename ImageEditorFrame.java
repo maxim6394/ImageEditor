@@ -45,6 +45,13 @@ public class ImageEditorFrame extends JFrame {
 	}
 
 	private void onOpen() {
-		JOptionPane.showMessageDialog(this, "Open Selected");
+		try{
+JFileChooser fileChooser = new JFileChooser(); fileChooser.showOpenDialog(this);
+File file = fileChooser.getSelectedFile(); BufferedImage image = ImageIO.read(file); panel.setImage(image);
+   }
+   catch(IOException e){
+JOptionPane.showMessageDialog(this,
+"Die Datei konnte nicht geöffnet werden");
+}
 	}
 }
